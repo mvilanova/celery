@@ -7,6 +7,8 @@ services:
     startCommand: "celery --app tasks worker --loglevel info --concurrency 4"
     autoDeploy: false
     envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.11"
       - key: CELERY_BROKER_URL
         fromService:
           name: tempoai-celery-redis
@@ -21,6 +23,8 @@ services:
     startCommand: "celery --app tasks flower --loglevel=info"
     autoDeploy: false
     envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.11"
       - key: CELERY_BROKER_URL
         fromService:
           type: redis
